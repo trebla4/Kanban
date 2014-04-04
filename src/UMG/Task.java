@@ -18,17 +18,27 @@ public class Task {
 	}
 
 	public Task(String title) {
-		this(title, State.BACKLOG);
+		this(title, State.BACKLOG, (short) 1);
 		System.out.println("starting Task(String) ctor...");
 	}
 
+	public Task(String title, short priority) {
+		this(title, State.BACKLOG, priority);
+		System.out.println("starting Task(String, Priority) ctor...");
+	}
+
 	public Task(String title, State state) {
-		super();
+		this(title, state, (short) 1);
 		System.out.println("starting Task(String, State) ctor...");
+	}
+
+	public Task(String title, State state, short priority) {
+		super();
+		System.out.println("starting Task(String, State, Priority) ctor...");
 
 		this.title = title;
-		createDate = new Date(priority, priority, priority);
-		priority = 1;
+		createDate = new Date(priority);
+		this.priority = priority;
 		this.state = state;
 	}
 
@@ -111,4 +121,13 @@ public class Task {
 		return false;
 	}
 
+	public boolean save() {
+		try {
+			Thread.sleep(1 * 1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		return true;
+
+	}
 }

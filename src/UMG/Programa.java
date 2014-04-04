@@ -1,16 +1,29 @@
 package UMG;
 
+import java.util.Date;
+import java.util.Random;
+
 
 public class Programa {
+	public static IDashboard dashboard = new DashboardList();
+
 	public static void main(String[] args) throws Exception {
-		Task task;
-		IDashboard dashboard = new DashboardList();
+		System.out.println("Start " + new Date());
+
+		Thread thread;
+		User user;
 		for (int i = 0; i < 15; i++) {
-			task = new Task("Task " + i, State.DO_TO);
-			if (dashboard.add(task)) {
-				System.out.println("Added " + task.getTitle());
-			}
+			user = new User();
+			thread = new Thread(user);
+
+			thread.setName("Title " + i);
+			int priority = 1 + (int) (Math.random() * ((10 - 1) + 1));
+			thread.setPriority(priority);
+
+			thread.start();
 		}
+
+		System.out.println("End " + new Date());
 	}
 
 }
