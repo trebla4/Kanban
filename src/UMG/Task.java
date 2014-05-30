@@ -11,6 +11,7 @@ public class Task {
 	private String owner;
 	private Date dueDate;
 	private Date createDate;
+	private final Object addSave= new Object();
 
 	public Task() {
 		this("");
@@ -122,12 +123,22 @@ public class Task {
 	}
 
 	public boolean save() {
-		try {
-			Thread.sleep(1 * 1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
+		//Agregar listener
+	
+		synchronized (addSave){
+			try {
+				Thread.sleep(1 * 1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			return true;
 		}
-		return true;
 
+	}
+	
+	public boolean remove(){
+		synchronized(this){
+			return true;
+		}
 	}
 }
