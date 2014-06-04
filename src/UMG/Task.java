@@ -141,4 +141,17 @@ public class Task {
 			return true;
 		}
 	}
+	
+	//Metodo para HTML
+	public String Html() {
+		return "<table><tr><td>Titulo:</td><td>" + title + "</td></tr>"
+				+ "<tr><td>Descriptcion:</td><td>" + description + "</td></tr>"
+				+ "<tr><td>Estatus:</td><td>" + state + "</td></tr>"
+				+ "<tr><td>Categoria:</td><td>" + category + "</td></tr>"
+				+ "<tr><td>Prioridad:</td><td>" + priority + "</td></tr>"
+				+ "<tr><td>Propietario:</td><td>" + owner + "</td></tr>"
+				+ "<tr><td>Fecha de Vencimiento:</td><td>" + dueDate + "</td></tr>"
+				+ "<tr><td>Fecha de Creación:</td><td>" + createDate
+				+ "</td></tr></table>";
+	}
 }
